@@ -10,6 +10,7 @@ Name|Desc
 REGION |AWS Region
 SQL|Executed in Athena
 OUTPUT_LOCATION|Athena will save query result on this location
+LOGLEVEL| 0(disable) - 6(trace)
 
 ## Optional Variables
 

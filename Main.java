@@ -35,6 +35,14 @@ public class Main {
 			System.out.println(String.format("WORKGROUP -> %s", workgroup));
 		}
 
+		String loglevel = System.getenv("LOGLEVEL");
+		if (loglevel == null || loglevel.isEmpty()) {
+			loglevel = "1";
+			System.out.println(String.format("Use default LOGLEVEL -> %s", loglevel));
+		} else {
+			System.out.println(String.format("LOGLEVEL -> %s", loglevel));
+		}
+
 		try {
 			String athenaUrl = String.format("jdbc:awsathena://%s.amazonaws.com:443", region);
 			Class.forName("com.simba.athena.jdbc.Driver");
@@ -42,6 +50,7 @@ public class Main {
 			info.put("AwsRegion", region);
 			info.put("S3OutputLocation", outputLocation);
 			info.put("Workgroup", workgroup);
+			info.put("LogLevel", loglevel);
 			info.put("AwsCredentialsProviderClass",
 					"com.simba.athena.amazonaws.auth.DefaultAWSCredentialsProviderChain");
 
